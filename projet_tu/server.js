@@ -1,6 +1,14 @@
 const express = require('express');
 const session = require('express-session');
 const sqlite3 = require('sqlite3').verbose();
+//const users = require('./gestionUtilisateurs.js');
+const formations = require('./gestionFormations.js');
+const avis = require('./gestionAvis.js');
+const crypto = require('./security.js');
+const authentification = require('./authentification.js');
+const secu = require('./security.js');
+
+
 
 const app = express();
 const port = 3000;

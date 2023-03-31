@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./utilisateurs.db:/app/utilisateurs.db
+      - ./formations.db:/app/formations.db
+      - ./views:/app/views
+    depends_on:
+      - db
+  db:
+    image: "sqlite"
+    command: "sqlite3 /data/utilisateurs.db < /data/init_utilisateurs.sql && sqlite3 /data/formations.db < /data/init_formations.sql"
+    volumes:
+      - ./data:/data
+    environment:
+      - "DB_FILE=utilisateurs.db"
+      - "FORMATIONS_DB_FILE=formations.db"
