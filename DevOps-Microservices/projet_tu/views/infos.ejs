@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Informations</title>
+</head>
+<body>
+  <h1>Bienvenue <%= username %>!</h1>
+  <p>Voici les DUT de la ville de Rennes:</p>
+  <ul>
+    <li>
+      <h2>DUT Informatique</h2>
+      <p>Le DUT Informatique de l'Université de Rennes 1 forme des techniciens supérieurs spécialisés en informatique. Les diplômés de cette formation sont capables de concevoir, réaliser et maintenir des systèmes informatiques pour répondre aux besoins des entreprises et des organisations.</p>
+    </li>
+    <li>
+      <h2>DUT Génie civil - Construction durable</h2>
+      <p>Le DUT Génie civil - Construction durable de l'IUT de Rennes forme des techniciens supérieurs capables de concevoir et réaliser des projets de construction dans le respect des normes et des exigences de développement durable. Les diplômés de cette formation peuvent travailler dans les domaines du bâtiment, des travaux publics, de l'environnement, etc.</p>
+    </li>
+    <li>
+      <h2>DUT Gestion des entreprises et des administrations</h2>
+      <p>Le DUT Gestion des entreprises et des administrations de l'IUT de Rennes forme des techniciens supérieurs polyvalents dans les domaines de la gestion, du management et de l'administration des entreprises et des organisations. Les diplômés de cette formation peuvent travailler dans des PME, des grandes entreprises, des associations, des collectivités territoriales, etc.</p>
+    </li>
+  </ul>
+  <p>Laissez un commentaire:</p>
+  <form action="/avis" method="POST">
+    <textarea name="commentaire"></textarea>
+    <br>
+    <button type="submit">Envoyer</button>
+  </form>
+  <h2>Avis des utilisateurs:</h2>
+  <% if (avis.length > 0) { %>
+    <ul>
+      <% avis.forEach(function(avis) { %>
+        <li>
+          <h3><%= avis.username %></h3>
+          <p><%= avis.commentaire %></p>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>Aucun avis pour le moment.</p>
+  <% } %>
+  <a href="/logout">Déconnexion</a>
+</body>
+</html>
